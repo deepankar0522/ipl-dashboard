@@ -4,7 +4,9 @@ spring:
   application:
     name: users-ws
   datasource:
-    password: admin123
+    password: root
+    # for windows ##root
+    # for mac ##admin123
     testWhileIdle: true
     url: jdbc:mysql://localhost:3306/ipl?useSSL=false
     username: root
