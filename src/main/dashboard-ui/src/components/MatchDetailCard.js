@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const MatchDetailCard = ({ teamName, latestMatch }) => {
+  console.log(latestMatch);
   const otherTeam = teamName === latestMatch.team1 ? latestMatch.team2 : latestMatch.team1;
   const otherTeamLink = "/teams/"+otherTeam;
   return (

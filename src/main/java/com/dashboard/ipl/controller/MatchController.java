@@ -16,7 +16,7 @@ public class MatchController {
     @Autowired
     MatchRepository matchRepository;
 
-    @RequestMapping("/team/{teamName}/matches")
+    @RequestMapping("/teams/{teamName}/matches")
     public List<Match> getMatchesForTeam(@PathVariable String teamName, @RequestParam int year) {
         return matchRepository.getMatchesByTeamBetweenDates(teamName, LocalDate.of(year, 1, 1), LocalDate.of(year + 1, 1, 1));
 

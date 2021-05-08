@@ -8,8 +8,8 @@ import MatchSmallCard from "../components/MatchSmallCard";
 export const TeamPage = () => {
   const [teamData, setTeamData] = useState();
   const { teamName } = useParams();
-  let URL = `http://localhost:8080/ipl-dashboard/team/${teamName}`;
-  console.log(URL);
+  let URL = `http://localhost:8080/ipl-dashboard/teams/${teamName}`;
+ // console.log(URL);
   useEffect(() => {
     axios
       .get(URL)
@@ -18,7 +18,7 @@ export const TeamPage = () => {
       })
       .catch((e) => console.log("Error!, cannot fetch"));
   }, [URL]);
-  console.log(teamData);
+ // console.log(teamData);
   return (
     <div className="TeamPage">
       <h1>{teamData && teamData.teamName}</h1>
