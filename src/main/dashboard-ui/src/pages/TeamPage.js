@@ -11,7 +11,7 @@ import "./TeamPage.scss";
 export const TeamPage = () => {
   const [teamData, setTeamData] = useState();
   const { teamName } = useParams();
-  let URL = `http://localhost:8080/ipl-dashboard/teams/${teamName}`;
+  let URL = `${process.env.REACT_APP_API_ROOT_URL}/teams/${teamName}`;
   // console.log(URL);
   useEffect(() => {
     axios

@@ -9,7 +9,7 @@ import "./MatchPage.scss";
 const MatchPage = () => {
   const [matchData, setMatchData] = useState();
   const { teamName, year } = useParams();
-  let URL = `http://localhost:8080/ipl-dashboard/teams/${teamName}/matches?year=${year}`;
+  let URL = `${process.env.REACT_APP_API_ROOT_URL}/teams/${teamName}/matches?year=${year}`;
   // console.log(URL);
   useEffect(() => {
     axios

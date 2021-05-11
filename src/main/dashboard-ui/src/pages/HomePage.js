@@ -5,15 +5,16 @@ import "./HomePage.scss";
 
 const HomePage = () => {
   const [teams, setTeams] = useState([]);
+  let URL = `${process.env.REACT_APP_API_ROOT_URL}/ipl-dashboard/teams`;
   useEffect(() => {
     axios
-      .get("http://localhost:8080/ipl-dashboard/teams")
+      .get(URL)
       .then((response) => setTeams(response.data))
       .catch((e) => {
         console.log("Cannot fetch teams !!");
       });
-  }, []);
-
+  }, [URL]);
+    console.log(URL);
   return (
     <div className="HomePage">
       <div className="header-section">
