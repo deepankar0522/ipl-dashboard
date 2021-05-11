@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { PieChart } from 'react-minimal-pie-chart';
 
 
@@ -21,7 +21,7 @@ export const TeamPage = () => {
       })
       .catch((e) => console.log("Error!, cannot fetch"));
   }, [URL]);
-  // console.log(teamData);
+  console.log(teamData);
   return (
     <div className="TeamPage">
       <div className="team-name-section">
@@ -30,8 +30,8 @@ export const TeamPage = () => {
       <div className="win-loss-section">
       <PieChart
         data={[
-          { title: 'lost', value: teamData.totalMatches-teamData.totalWins, color: '#a34d5d' },
-          { title: 'won', value: teamData.totalWins, color: '#4da375' },
+          { title: 'lost', value: teamData && teamData.totalMatches-teamData.totalWins, color: '#a34d5d' },
+          { title: 'won', value: teamData && teamData.totalWins, color: '#4da375' },
         ]}
       />
       </div>
@@ -50,7 +50,9 @@ export const TeamPage = () => {
             <MatchSmallCard key={match.id} match={match} teamName={teamName} />
           );
         })}
-        <div className="more-link"> <a href="#">More ></a></div>
+        <div className="more-link"> 
+          <Link to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`}>More </Link>
+        </div>
     </div>
   );
 };

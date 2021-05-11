@@ -3,6 +3,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 import MatchDetailCard from "./../components/MatchDetailCard";
+import YearSelector from "./../components/YearSelector";
+import "./MatchPage.scss";
 
 const MatchPage = () => {
   const [matchData, setMatchData] = useState();
@@ -21,15 +23,22 @@ const MatchPage = () => {
 
   return (
     <div className="MatchPage">
-      <h1>{matchData && matchData.teamName}</h1>
-      {matchData &&
-        matchData.map((match) => (
-          <MatchDetailCard
-            key={match.id}
-            teamName={teamName}
-            latestMatch={match}
-          />
-        ))}
+      
+      <div className="year-selector">
+        <h3> Select Year </h3>
+        <YearSelector teamName={teamName} />
+      </div>
+      <div>
+      <h1 className="page-heading">{teamName} matches in {year}</h1>
+        {matchData &&
+          matchData.map((match) => (
+            <MatchDetailCard
+              key={match.id}
+              teamName={teamName}
+              latestMatch={match}
+            />
+          ))}
+      </div>
     </div>
   );
 };
