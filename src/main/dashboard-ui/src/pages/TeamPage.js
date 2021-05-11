@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { PieChart } from 'react-minimal-pie-chart';
+
 
 import MatchDetailCard from "../components/MatchDetailCard";
 import MatchSmallCard from "../components/MatchSmallCard";
@@ -25,7 +27,14 @@ export const TeamPage = () => {
       <div className="team-name-section">
         <h1 className="team-name">{teamData && teamData.teamName}</h1>
       </div>
-      <div className="win-loss-section">wins /losses</div>
+      <div className="win-loss-section">
+      <PieChart
+        data={[
+          { title: 'lost', value: teamData.totalMatches-teamData.totalWins, color: '#a34d5d' },
+          { title: 'won', value: teamData.totalWins, color: '#4da375' },
+        ]}
+      />
+      </div>
       <div className="match-detail-section">
       <h3>Latest Matches</h3>
         {teamData && (
@@ -41,6 +50,7 @@ export const TeamPage = () => {
             <MatchSmallCard key={match.id} match={match} teamName={teamName} />
           );
         })}
+        <div className="more-link"> <a href="#">More ></a></div>
     </div>
   );
 };
