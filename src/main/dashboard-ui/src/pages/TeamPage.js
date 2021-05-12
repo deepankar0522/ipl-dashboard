@@ -11,8 +11,8 @@ import "./TeamPage.scss";
 export const TeamPage = () => {
   const [teamData, setTeamData] = useState();
   const { teamName } = useParams();
-  let URL = `${process.env.REACT_APP_API_ROOT_URL}/teams/${teamName}`;
-  // console.log(URL);
+  let URL = encodeURI(`${process.env.REACT_APP_API_ROOT_URL}/teams/${teamName}`);
+
   useEffect(() => {
     axios
       .get(URL)
@@ -21,7 +21,7 @@ export const TeamPage = () => {
       })
       .catch((e) => console.log("Error!, cannot fetch"));
   }, [URL]);
-  console.log(teamData);
+  console.log(URL, teamData);
   return (
     <div className="TeamPage">
       <div className="team-name-section">

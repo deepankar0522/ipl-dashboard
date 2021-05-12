@@ -13,13 +13,13 @@ const MatchPage = () => {
   // console.log(URL);
   useEffect(() => {
     axios
-      .get(URL)
+      .get(encodeURI(URL))
       .then((response) => {
         setMatchData(response.data);
       })
       .catch((e) => console.log("Error!, cannot fetch"));
   }, [URL]);
-  // console.log(matchData, year);
+  console.log(URL, matchData, year);
 
   return (
     <div className="MatchPage">
